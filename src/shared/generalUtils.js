@@ -5,7 +5,7 @@ import { TYPE_SINGLE_DATE, TYPE_RANGE, TYPE_MUTLI_DATE } from './constants';
 */
 
 const createUniqueRange = (number, startingId) =>
-  Array.from(Array(number).keys()).map(key => ({
+  Array.from(Array(number).keys()).map((key) => ({
     value: key + 1,
     id: `${startingId}-${key}`,
   }));
@@ -15,13 +15,13 @@ const isSameDay = (day1, day2) => {
   return day1.day === day2.day && day1.month === day2.month && day1.year === day2.year;
 };
 
-const putZero = number => (number.toString().length === 1 ? `0${number}` : number);
+const putZero = (number) => (number.toString().length === 1 ? `0${number}` : number);
 
-const toExtendedDay = date => [date.year, date.month, date.day];
+const toExtendedDay = (date) => [date.year, date.month, date.day];
 
-const shallowClone = value => ({ ...value });
+const shallowClone = (value) => ({ ...value });
 
-const deepCloneObject = obj =>
+const deepCloneObject = (obj) =>
   JSON.parse(JSON.stringify(obj, (key, value) => (typeof value === 'undefined' ? null : value)));
 
 const getDateAccordingToMonth = (date, direction) => {
@@ -43,7 +43,7 @@ const getDateAccordingToMonth = (date, direction) => {
 const hasProperty = (object, propertyName) =>
   Object.prototype.hasOwnProperty.call(object || {}, propertyName);
 
-const getValueType = value => {
+const getValueType = (value) => {
   if (Array.isArray(value)) return TYPE_MUTLI_DATE;
   if (hasProperty(value, 'from') && hasProperty(value, 'to')) return TYPE_RANGE;
   if (

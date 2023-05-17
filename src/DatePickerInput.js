@@ -44,7 +44,7 @@ const DatePickerInput = React.forwardRef(
     };
 
     const getMultiDateValue = () => {
-      return value.map(date => getLanguageDigits(date.day)).join(`${digitSeparator} `);
+      return value.map((date) => getLanguageDigits(date.day)).join(`${digitSeparator} `);
     };
 
     const getValue = () => {

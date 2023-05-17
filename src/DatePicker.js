@@ -59,7 +59,7 @@ const DatePicker = ({
     if (shouldCloseCalendar) inputElement.current.blur();
   }, [value, isCalendarOpen]);
 
-  const handleBlur = e => {
+  const handleBlur = (e) => {
     e.persist();
     if (!isCalendarOpen) return;
     const isInnerElementFocused = calendarContainerElement.current.contains(e.relatedTarget);
@@ -108,7 +108,7 @@ const DatePicker = ({
     }
   }, [isCalendarOpen]);
 
-  const handleCalendarChange = newValue => {
+  const handleCalendarChange = (newValue) => {
     const valueType = getValueType(value);
     onChange(newValue);
     if (valueType === TYPE_SINGLE_DATE) setCalendarVisiblity(false);

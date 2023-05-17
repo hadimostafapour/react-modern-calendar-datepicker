@@ -44,7 +44,7 @@ const Header = ({
       '.Calendar__monthYear.-shown .Calendar__monthText',
     );
     const yearText = monthText.nextSibling;
-    const hasActiveBackground = element => element.classList.contains('-activeBackground');
+    const hasActiveBackground = (element) => element.classList.contains('-activeBackground');
     const isInitialRender =
       !isOpen && !hasActiveBackground(monthText) && !hasActiveBackground(yearText);
     if (isInitialRender) return;
@@ -70,7 +70,7 @@ const Header = ({
     }`;
     primaryElement.classList.toggle('-activeBackground');
     secondaryElement.classList.toggle('-hidden');
-    arrows.forEach(arrow => {
+    arrows.forEach((arrow) => {
       const isHidden = arrow.classList.contains('-hidden');
       arrow.classList.toggle('-hidden');
       if (isHidden) {
@@ -83,7 +83,7 @@ const Header = ({
     });
   }, [isMonthSelectorOpen, isYearSelectorOpen]);
 
-  const getMonthYearText = isInitialActiveChild => {
+  const getMonthYearText = (isInitialActiveChild) => {
     const date = getSlideDate({
       isInitialActiveChild,
       monthChangeDirection,
@@ -103,8 +103,8 @@ const Header = ({
     (isBeforeDate({ ...activeDate, day: 1 }, minimumDate) ||
       isSameDay(minimumDate, { ...activeDate, day: 1 }));
 
-  const onMonthChangeTrigger = direction => {
-    const isMonthChanging = Array.from(monthYearWrapperElement.current.children).some(child =>
+  const onMonthChangeTrigger = (direction) => {
+    const isMonthChanging = Array.from(monthYearWrapperElement.current.children).some((child) =>
       child.classList.contains('-shownAnimated'),
     );
     if (isMonthChanging) return;
@@ -112,7 +112,7 @@ const Header = ({
   };
 
   // first button text is the one who shows the current month and year(initial active child)
-  const monthYearButtons = [true, false].map(isInitialActiveChild => {
+  const monthYearButtons = [true, false].map((isInitialActiveChild) => {
     const { month, year } = getMonthYearText(isInitialActiveChild);
     const isActiveMonth = month === getMonthName(activeDate.month);
     const hiddenStatus = {

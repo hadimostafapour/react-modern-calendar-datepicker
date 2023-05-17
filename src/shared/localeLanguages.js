@@ -58,7 +58,7 @@ const localeLanguages = {
       return digit
         .toString()
         .split('')
-        .map(letter => PERSIAN_NUMBERS[Number(letter)])
+        .map((letter) => PERSIAN_NUMBERS[Number(letter)])
         .join('');
     },
     nextMonth: 'ماه بعد',
@@ -76,7 +76,7 @@ const localeLanguages = {
   },
 };
 
-const getLocaleDetails = locale => {
+const getLocaleDetails = (locale) => {
   if (typeof locale === 'string') return localeLanguages[locale];
   return locale;
 };

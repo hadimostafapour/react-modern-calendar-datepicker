@@ -15,12 +15,12 @@ const MonthSelector = ({ activeDate, maximumDate, minimumDate, onMonthSelect, is
   const { getMonthNumber, isBeforeDate } = useLocaleUtils(locale);
   const { months: monthsList } = useLocaleLanguage(locale);
 
-  const handleKeyDown = e => {
+  const handleKeyDown = (e) => {
     handleKeyboardNavigation(e, { allowVerticalArrows: false });
   };
 
   const renderMonthSelectorItems = () =>
-    monthsList.map(persianMonth => {
+    monthsList.map((persianMonth) => {
       const monthNumber = getMonthNumber(persianMonth);
       const monthDate = { day: 1, month: monthNumber, year: activeDate.year };
       const isAfterMaximumDate =

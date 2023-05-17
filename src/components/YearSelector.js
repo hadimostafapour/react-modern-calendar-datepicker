@@ -42,7 +42,7 @@ const YearSelector = ({
   }, [isOpen]);
 
   const renderSelectorYears = () => {
-    return allYears.map(item => {
+    return allYears.map((item) => {
       const isAfterMaximumDate = maximumDate && item > maximumDate.year;
       const isBeforeMinimumDate = minimumDate && item < minimumDate.year;
       const isSelected = activeDate.year === item;
@@ -66,7 +66,7 @@ const YearSelector = ({
     });
   };
 
-  const handleKeyDown = e => {
+  const handleKeyDown = (e) => {
     handleKeyboardNavigation(e, { allowVerticalArrows: false });
   };
 

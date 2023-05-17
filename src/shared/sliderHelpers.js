@@ -12,11 +12,11 @@ const getSlideDate = ({ parent, isInitialActiveChild, activeDate, monthChangeDir
 
 const animateContent = ({ parent, direction }) => {
   const wrapperChildren = Array.from(parent.children);
-  const shownItem = wrapperChildren.find(child => child.classList.contains('-shown'));
-  const hiddenItem = wrapperChildren.find(child => child !== shownItem);
+  const shownItem = wrapperChildren.find((child) => child.classList.contains('-shown'));
+  const hiddenItem = wrapperChildren.find((child) => child !== shownItem);
   const baseClass = shownItem.classList[0];
   const isNextMonth = direction === 'NEXT';
-  const getAnimationClass = value => (value ? '-hiddenNext' : '-hiddenPrevious');
+  const getAnimationClass = (value) => (value ? '-hiddenNext' : '-hiddenPrevious');
   hiddenItem.style.transition = 'none';
   shownItem.style.transition = '';
   shownItem.className = `${baseClass} ${getAnimationClass(!isNextMonth)}`;

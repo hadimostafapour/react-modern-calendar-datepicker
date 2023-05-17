@@ -22,11 +22,11 @@ const utils = (locale = 'en') => {
     return localeGetToday({ year, month, day });
   };
 
-  const getMonthName = month => monthsList[month - 1];
+  const getMonthName = (month) => monthsList[month - 1];
 
-  const getMonthNumber = monthName => monthsList.indexOf(monthName) + 1;
+  const getMonthNumber = (monthName) => monthsList.indexOf(monthName) + 1;
 
-  const getMonthFirstWeekday = date => {
+  const getMonthFirstWeekday = (date) => {
     const gregorianDate = toNativeDate({ ...date, day: 1 });
     const weekday = gregorianDate.getDay();
     const dayIndex = weekday + weekStartingIndex;
