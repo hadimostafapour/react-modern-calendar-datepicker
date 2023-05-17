@@ -1,5 +1,6 @@
 module.exports = {
   verbose: true,
+  "testEnvironment": "jsdom",
   setupFilesAfterEnv: ['./test/setup-tests'],
   coverageThreshold: {
     global: {
