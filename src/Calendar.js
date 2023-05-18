@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, {useState, useRef, useEffect, useMemo} from 'react';
 
 import { getDateAccordingToMonth, shallowClone, getValueType } from './shared/generalUtils';
 import { TYPE_SINGLE_DATE, TYPE_RANGE, TYPE_MUTLI_DATE } from './shared/constants';
@@ -9,6 +9,7 @@ import { Header, MonthSelector, YearSelector, DaysList } from './components';
 const Calendar = ({
   value,
   onChange,
+  theme,
   onDisabledDayError,
   calendarClassName,
   calendarTodayClassName,
@@ -114,15 +115,30 @@ const Calendar = ({
     });
   };
 
+  const overrideVars = useMemo(() => {
+    if(colorPrimary || colorPrimaryLight || slideAnimationDuration) {
+      const props = {};
+      if(colorPrimary)
+        props['--cl-color-primary'] = colorPrimary
+
+
+      if(colorPrimary)
+        props['--cl-color-primary-light'] = colorPrimary
+
+
+      if(colorPrimary)
+        props['--animation-duration'] = colorPrimary
+
+      return props;
+    }
+  }, [colorPrimary || colorPrimaryLight || slideAnimationDuration])
+
+
   return (
     <div
-      className={`Calendar -noFocusOutline ${calendarClassName} -${isRtl ? 'rtl' : 'ltr'}`}
+      className={`Calendar -noFocusOutline ${calendarClassName} -${isRtl ? 'rtl' : 'ltr'} -theme-${theme}`}
       role="grid"
-      style={{
-        '--cl-color-primary': colorPrimary,
-        '--cl-color-primary-light': colorPrimaryLight,
-        '--animation-duration': slideAnimationDuration,
-      }}
+      style={overrideVars}
       ref={calendarElement}
     >
       <Header
@@ -188,9 +204,7 @@ const Calendar = ({
 Calendar.defaultProps = {
   minimumDate: null,
   maximumDate: null,
-  colorPrimary: '#0eca2d',
-  colorPrimaryLight: '#cff4d5',
-  slideAnimationDuration: '0.4s',
+  theme: 'default',
   calendarClassName: '',
   locale: 'en',
   value: null,

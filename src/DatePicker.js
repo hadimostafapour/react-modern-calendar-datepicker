@@ -6,6 +6,7 @@ import { getValueType } from './shared/generalUtils';
 import { TYPE_SINGLE_DATE, TYPE_MUTLI_DATE, TYPE_RANGE } from './shared/constants';
 
 const DatePicker = ({
+  theme,
   value,
   onChange,
   formatInputText,
@@ -165,6 +166,7 @@ const DatePicker = ({
           >
             <Calendar
               value={value}
+              theme={theme}
               onChange={handleCalendarChange}
               calendarClassName={calendarClassName}
               calendarTodayClassName={calendarTodayClassName}
@@ -197,6 +199,7 @@ const DatePicker = ({
 DatePicker.defaultProps = {
   wrapperClassName: '',
   locale: 'en',
+  theme: 'default',
   calendarPopperPosition: 'auto',
 };
 
