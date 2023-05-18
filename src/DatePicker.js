@@ -140,7 +140,7 @@ const DatePicker = ({
       onFocus={openCalendar}
       onBlur={handleBlur}
       onKeyUp={handleKeyUp}
-      className={`DatePicker ${wrapperClassName}`}
+      className={`DatePicker ${wrapperClassName} -theme-${theme}`}
       role="presentation"
     >
       <DatePickerInput
